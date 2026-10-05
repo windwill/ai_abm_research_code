@@ -1,0 +1,15 @@
+{
+  "Scenario": {
+    "id": "L2",
+    "family": "labor",
+    "label": "High Reskilling Capacity",
+    "notes": "Higher training responsiveness and lower effective baseline training cost."
+  },
+  "LaborParams": {
+    "theta_s": 0.80,
+    "C_T": 0.12
+  },
+  "SimulationParams": {
+    "training_subsidy_effect": 0.75
+  }
+}

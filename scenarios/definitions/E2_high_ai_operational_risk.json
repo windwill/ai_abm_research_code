@@ -1,0 +1,26 @@
+{
+  "Scenario": {
+    "id": "E2",
+    "family": "ai_operational_risk",
+    "label": "High AI Operational Risk",
+    "notes": "Lower data readiness and immature deployment raise AI error event probability and operational losses."
+  },
+  "SimulationParams": {
+    "enable_ai_operational_risk": true,
+    "enable_deployment_friction": true,
+    "data_readiness_mean": 0.30,
+    "data_readiness_sd": 0.12,
+    "pilot_start_scale": 0.90,
+    "pilot_success_base": 0.05,
+    "pilot_success_data_weight": 0.25,
+    "pilot_failure_base": 0.20,
+    "pilot_failure_data_weight": 0.35,
+    "ai_error_base": 0.020,
+    "ai_error_data_sensitivity": 0.120,
+    "ai_error_stage_sensitivity": 0.040,
+    "ai_error_adoption_sensitivity": 0.060,
+    "ai_loss_severity": 0.060,
+    "ai_loss_noise": 0.25,
+    "ai_loss_cap_share": 0.35
+  }
+}

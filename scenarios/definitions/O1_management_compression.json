@@ -1,0 +1,15 @@
+{
+  "Scenario": {
+    "id": "O1",
+    "family": "occupation",
+    "label": "Management Compression",
+    "notes": "Higher AI substitution pressure for senior management roles, representing flatter organizational structures and AI-supported decision processes."
+  },
+  "SimulationParams": {
+    "enable_occupation_layer": true,
+    "occupation_ai_sep_scale": 0.10,
+    "occupation_substitution_multipliers": {
+      "senior_management": 5.0
+    }
+  }
+}

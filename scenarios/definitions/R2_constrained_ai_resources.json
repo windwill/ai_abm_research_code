@@ -1,0 +1,15 @@
+{
+  "Scenario": {
+    "id": "R2",
+    "family": "resource_capacity",
+    "label": "Constrained AI-Supporting Resources",
+    "notes": "AI-supporting resource capacity grows slowly relative to desired adoption, slowing realized AI diffusion."
+  },
+  "SimulationParams": {
+    "enable_resource_constraint": true,
+    "resource_capacity_initial": 0.12,
+    "resource_capacity_growth": 0.01,
+    "resource_demand_per_adopter": 1.0,
+    "resource_constraint_floor": 0.10
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "description": "Literature-supported actuarial translation assumptions for mapping ABM scenario paths into actuarial stress indicators. These values use public actuarial and economic sources where a direct anchor is available, and transparent stress assumptions where public calibration is not defensible. They remain report-level translation assumptions, not company-specific pricing, reserving, ALM, capital, or pension valuation assumptions.",
+  "life": {
+    "beta_unemployment_lapse": 1.5,
+    "beta_wage_shortfall_lapse": 0.5,
+    "beta_inequality_lapse": 0.25,
+    "beta_output_new_business": 1.0,
+    "beta_unemployment_new_business": 1.0,
+    "index_floor": 0.25
+  },
+  "workers_comp": {
+    "gamma_unemployment_frequency": 0.5,
+    "gamma_wage_severity": 0.6,
+    "index_floor": 0.05,
+    "occupation_rates": {
+      "senior_management": 0.20,
+      "professional_technical": 0.30,
+      "clerical_admin": 0.25,
+      "sales_service": 0.55,
+      "production_operations": 1.20,
+      "transport_logistics": 1.50
+    },
+    "occupation_frequency": {
+      "senior_management": 0.25,
+      "professional_technical": 0.35,
+      "clerical_admin": 0.30,
+      "sales_service": 0.65,
+      "production_operations": 1.25,
+      "transport_logistics": 1.45
+    },
+    "occupation_severity": {
+      "senior_management": 1.10,
+      "professional_technical": 1.00,
+      "clerical_admin": 0.85,
+      "sales_service": 0.90,
+      "production_operations": 1.20,
+      "transport_logistics": 1.35
+    }
+  },
+  "pension": {
+    "initial_funded_ratio": 1.038,
+    "base_asset_return": 0.0661,
+    "base_liability_growth": 0.04,
+    "salary_weight": 0.5,
+    "normal_cost_rate": 0.04,
+    "benefit_payment_rate": 0.04,
+    "alpha_growth_asset": 1.0,
+    "alpha_unemployment_asset": 0.75,
+    "alpha_debt_asset": 0.05,
+    "sponsor_unemployment_weight": 1.0,
+    "sponsor_growth_weight": 1.0,
+    "sponsor_debt_weight": 0.2,
+    "sponsor_ma_weight": 0.02,
+    "return_floor": -0.30,
+    "return_cap": 0.30,
+    "liability_growth_floor": -0.10,
+    "liability_growth_cap": 0.20
+  },
+  "investment": {
+    "required_return": 0.05,
+    "base_equity_return": 0.06,
+    "base_bond_return": 0.035,
+    "base_credit_spread": 0.015,
+    "alpha_growth_equity": 1.2,
+    "alpha_unemployment_equity": 0.8,
+    "alpha_unemployment_credit_spread": 0.25,
+    "alpha_debt_credit_spread": 0.02,
+    "credit_duration": 4.0,
+    "equity_weight": 0.35,
+    "bond_weight": 0.45,
+    "credit_weight": 0.20,
+    "return_floor": -0.40,
+    "return_cap": 0.35,
+    "spread_floor": 0.0
+  },
+  "operational": {
+    "ai_loss_weight": 1.0,
+    "cyber_loss_weight": 1.0,
+    "compute_cost_weight": 0.5,
+    "control_cost_weight": 0.5,
+    "governance_data_readiness_weight": 1.0,
+    "governance_ai_error_weight": 2.0,
+    "governance_cyber_weight": 2.0,
+    "governance_supplier_hhi_weight": 0.5
+  }
+}

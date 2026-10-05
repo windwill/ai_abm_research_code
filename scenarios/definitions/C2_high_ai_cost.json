@@ -1,0 +1,17 @@
+{
+  "Scenario": {
+    "id": "C2",
+    "family": "ai_cost",
+    "label": "High AI Automation Cost",
+    "notes": "AI automation is expensive relative to human labour cost, reducing adoption unless productivity gains offset the cost disadvantage."
+  },
+  "SimulationParams": {
+    "enable_ai_relative_cost": true,
+    "ai_cost_base": 3.00,
+    "ai_cost_decline": 0.00,
+    "ai_cost_implementation": 0.25,
+    "ai_cost_monitoring": 0.10,
+    "ai_relative_cost_sensitivity": 1.25,
+    "ai_operating_cost_scale": 0.08
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Scenario": {
+    "id": "I2",
+    "family": "compute_cost",
+    "label": "High computation cost",
+    "notes": "Higher computation unit costs and workload intensity reduce adoption incentives and raise operating costs."
+  },
+  "SimulationParams": {
+    "enable_compute_cost": true,
+    "compute_unit_cost_base": 0.80,
+    "compute_unit_cost_decline": 0.00,
+    "compute_unit_cost_floor": 0.20,
+    "compute_intensity_per_adoption": 2.00,
+    "compute_training_share": 0.35,
+    "compute_inference_scale": 1.25,
+    "compute_adoption_cost_sensitivity": 0.80,
+    "compute_cost_cap_share": 0.45
+  }
+}

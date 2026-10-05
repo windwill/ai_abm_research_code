@@ -1,0 +1,15 @@
+{
+  "Scenario": {
+    "id": "O2",
+    "family": "occupation",
+    "label": "Clerical Automation",
+    "notes": "Higher AI substitution pressure for clerical and administrative roles."
+  },
+  "SimulationParams": {
+    "enable_occupation_layer": true,
+    "occupation_ai_sep_scale": 0.06,
+    "occupation_substitution_multipliers": {
+      "clerical_admin": 3.0
+    }
+  }
+}

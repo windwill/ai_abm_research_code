@@ -1,0 +1,72 @@
+year,variable,value,aggregation,source_url
+2024,ACS_GINI,0.4809,,"https://api.census.gov/data/2024/acs/acs1?get=NAME,B19083_001E&for=us:1"
+2022,BDS_FIRM_EXIT_RATE,0.08121097812311709,,"https://api.census.gov/data/timeseries/bds?get=NAME,FIRM,FIRMDEATH_FIRMS&for=us:*&time=2022"
+2015,CES0500000003,25.010833333333334,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2016,CES0500000003,25.6525,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2017,CES0500000003,26.30916666666667,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2018,CES0500000003,27.102500000000003,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2019,CES0500000003,27.99833333333333,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2020,CES0500000003,29.36,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2021,CES0500000003,30.613333333333333,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2022,CES0500000003,32.25833333333333,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2023,CES0500000003,33.69583333333333,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2024,CES0500000003,35.057500000000005,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES0500000003
+2015,CPIAUCSL,237.00175000000002,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2016,CPIAUCSL,240.00541666666666,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2017,CPIAUCSL,245.121,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2018,CPIAUCSL,251.09949999999995,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2019,CPIAUCSL,255.65258333333335,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2020,CPIAUCSL,258.85574999999994,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2021,CPIAUCSL,270.9734166666667,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2022,CPIAUCSL,292.62641666666667,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2023,CPIAUCSL,304.703,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2024,CPIAUCSL,313.6981666666666,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+2015,GDPC1,18892.206,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2016,GDPC1,19304.352,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2017,GDPC1,19882.352,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2018,GDPC1,20304.874,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2019,GDPC1,20985.448,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2020,GDPC1,20791.917,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2021,GDPC1,21988.737,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2022,GDPC1,22278.345,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2023,GDPC1,23033.78,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2024,GDPC1,23586.542,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2015,GFDEGDQ188S,102.64192,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2016,GFDEGDQ188S,104.64891,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2017,GFDEGDQ188S,102.27408,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2018,GFDEGDQ188S,105.04941,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2019,GFDEGDQ188S,105.78193,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2020,GFDEGDQ188S,125.62864,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2021,GFDEGDQ188S,119.3588,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2022,GFDEGDQ188S,117.36678,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2023,GFDEGDQ188S,119.61944,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2024,GFDEGDQ188S,121.43633,last,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GFDEGDQ188S
+2016,REAL_GDP_LOG_GROWTH,0.021581106658459248,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2017,REAL_GDP_LOG_GROWTH,0.02950194137025619,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2018,REAL_GDP_LOG_GROWTH,0.021028451661347702,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2019,REAL_GDP_LOG_GROWTH,0.032968289389126326,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2020,REAL_GDP_LOG_GROWTH,-0.009264939728744537,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2021,REAL_GDP_LOG_GROWTH,0.05596606230813528,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2022,REAL_GDP_LOG_GROWTH,0.013084762713514664,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2023,REAL_GDP_LOG_GROWTH,0.03334670366982451,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2024,REAL_GDP_LOG_GROWTH,0.023714461034760603,annual log difference,https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1
+2015,REAL_WAGE_INDEX,1.0,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2016,REAL_WAGE_INDEX,1.0128194748617216,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2017,REAL_WAGE_INDEX,1.0170679362471582,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2018,REAL_WAGE_INDEX,1.0227909952366019,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2019,REAL_WAGE_INDEX,1.0377802103190032,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2020,REAL_WAGE_INDEX,1.0747850711134506,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2021,REAL_WAGE_INDEX,1.0705509066996728,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2022,REAL_WAGE_INDEX,1.0446042457587958,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2023,REAL_WAGE_INDEX,1.0479072905761693,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2024,REAL_WAGE_INDEX,1.058991203748538,"nominal wage divided by CPI, normalized to first available year",FRED CES0500000003 and CPIAUCSL
+2015,UNRATE,5.275,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2016,UNRATE,4.875,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2017,UNRATE,4.358333333333333,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2018,UNRATE,3.891666666666666,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2019,UNRATE,3.6750000000000003,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2020,UNRATE,8.1,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2021,UNRATE,5.3500000000000005,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2022,UNRATE,3.6500000000000004,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2023,UNRATE,3.625,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE
+2024,UNRATE,4.025,mean,https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE

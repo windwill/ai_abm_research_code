@@ -1,0 +1,272 @@
+"""Plotting and PDF assembly helpers for simulation and calibration outputs."""
+
+from __future__ import annotations
+
+import os
+from typing import Dict, List, Optional, Tuple
+
+import numpy as np
+import pandas as pd
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+from .utils import pdf_pages
+
+def plot_series(df: pd.DataFrame, column: str, title: str, outpath: str, caption: Optional[str]=None):
+    plt.figure()
+    plt.plot(df.index.values, df[column].values)
+    plt.title(title)
+    plt.xlabel("t"); plt.ylabel(column); plt.tight_layout()
+    plt.savefig(outpath); plt.close()
+
+def make_plots(df: pd.DataFrame, outdir: str):
+    os.makedirs(outdir, exist_ok=True)
+    plot_series(df,"U","Unemployment rate over time", os.path.join(outdir,"plot_U.png"))
+    plot_series(df,"Adopt_mean","Average adoption over time", os.path.join(outdir,"plot_adoption.png"))
+    plot_series(df,"Y","Aggregate output over time", os.path.join(outdir,"plot_Y.png"))
+    plot_series(df,"Debt","Public debt trajectory", os.path.join(outdir,"plot_debt.png"))
+    plot_series(df,"Ineq","Inequality proxy over time", os.path.join(outdir,"plot_inequality.png"))
+
+def export_figset_pdf(df: pd.DataFrame, outpdf: str):
+    os.makedirs(os.path.dirname(outpdf) or ".", exist_ok=True)
+    with pdf_pages(outpdf) as pdf:
+        for col, title, cap in [
+            ("U","Unemployment rate over time","Notes: Simulated unemployment path. Later used to validate U_mean and Okun-type dynamics."),
+            ("Adopt_mean","Average adoption over time","Notes: Diffusion of automation across firms; S-curve dynamics depend on β_I and β_P."),
+            ("Y","Aggregate output over time","Notes: Aggregate production; used for growth and volatility moments."),
+            ("Debt","Public debt trajectory","Notes: Debt evolution under counter-cyclical spending and tax rules."),
+            ("Ineq","Inequality proxy over time","Notes: Income dispersion proxy (Top10/Bottom50)."),
+        ]:
+            fig = plt.figure()
+            plt.plot(df.index.values, df[col].values)
+            plt.title(title); plt.xlabel("t"); plt.ylabel(col)
+            plt.tight_layout()
+            pdf.savefig(fig); plt.close(fig)
+
+def compare_figs(df_base: pd.DataFrame, df_best: pd.DataFrame, outpdf: str, tag: str):
+    os.makedirs(os.path.dirname(outpdf) or ".", exist_ok=True)
+    from matplotlib.backends.backend_pdf import PdfPages
+    with PdfPages(outpdf) as pdf:
+        for col, title in [
+            ("U","Unemployment rate over time"),
+            ("Adopt_mean","Average adoption over time"),
+            ("Y","Aggregate output over time"),
+            ("Debt","Public debt trajectory"),
+            ("Ineq","Inequality proxy over time"),
+        ]:
+            fig = plt.figure()
+            plt.plot(df_base.index.values, df_base[col].values, label="Baseline")
+            plt.plot(df_best.index.values, df_best[col].values, label=f"Best-{tag}")
+            plt.title(title); plt.xlabel("t"); plt.ylabel(col); plt.legend()
+            plt.tight_layout(); pdf.savefig(fig); plt.close(fig)
+
+def compare_moments(m_base: Dict[str, float], m_best: Dict[str, float], targets: Dict[str, Tuple[float,float]], outpng: str):
+    # bar chart of baseline vs best vs target (one figure)
+    keys = list(m_base.keys())
+    x = np.arange(len(keys))
+    width = 0.35
+    plt.figure()
+    plt.bar(x - width/2, [m_base[k] for k in keys], width, label="Baseline")
+    plt.bar(x + width/2, [m_best[k] for k in keys], width, label="Best")
+    # overlay targets as point markers
+    tgt_vals = [targets.get(k, (np.nan, 1.0))[0] for k in keys]
+    plt.plot(x, tgt_vals, marker="o", linestyle="None", label="Targets")
+    plt.xticks(x, keys, rotation=45, ha="right"); plt.title("Moments: baseline vs best vs targets")
+    plt.tight_layout(); plt.legend(); plt.savefig(outpng); plt.close()
+
+
+def _text_page(pdf, title: str, lines: List[str]):
+    fig = plt.figure()
+    plt.axis('off')
+    txt = title + "\n\n" + "\n".join(lines)
+    plt.text(0.05, 0.95, txt, va='top', ha='left', wrap=True, fontsize=10)
+    pdf.savefig(fig); plt.close(fig)
+
+def generate_report(outpdf: str,
+                    df_base: pd.DataFrame,
+                    moments_base: Dict[str, float],
+                    targets: Dict[str, Tuple[float, float]],
+                    df_ga: Optional[pd.DataFrame] = None,
+                    moments_ga: Optional[Dict[str, float]] = None,
+                    df_cma: Optional[pd.DataFrame] = None,
+                    moments_cma: Optional[Dict[str, float]] = None):
+    os.makedirs(os.path.dirname(outpdf) or ".", exist_ok=True)
+    from matplotlib.backends.backend_pdf import PdfPages
+    with PdfPages(outpdf) as pdf:
+        # Cover page
+        _text_page(pdf, "ABM Automation – Calibration & Sensitivity Report", [
+            "This report compiles baseline figures, optimizer comparisons (GA/CMA-ES),",
+            "and a summary of calibration moments against targets.",
+            "Generated by abm_automation.py"
+        ])
+
+        # Baseline figure set
+        for col, title in [
+            ("U","Baseline: Unemployment rate over time"),
+            ("Adopt_mean","Baseline: Average adoption over time"),
+            ("Y","Baseline: Aggregate output over time"),
+            ("Debt","Baseline: Public debt trajectory"),
+            ("Ineq","Baseline: Inequality proxy over time"),
+        ]:
+            fig = plt.figure()
+            plt.plot(df_base.index.values, df_base[col].values)
+            plt.title(title); plt.xlabel("t"); plt.ylabel(col)
+            plt.tight_layout(); pdf.savefig(fig); plt.close(fig)
+
+        # Baseline moments vs targets
+        keys = list(moments_base.keys())
+        fig = plt.figure()
+        x = np.arange(len(keys)); width = 0.35
+        plt.bar(x - width/2, [moments_base[k] for k in keys], width, label="Baseline")
+        tgt_vals = [targets.get(k, (np.nan, 1.0))[0] for k in keys]
+        plt.plot(x, tgt_vals, marker="o", linestyle="None", label="Targets")
+        plt.xticks(x, keys, rotation=45, ha="right"); plt.title("Moments: baseline vs targets")
+        plt.tight_layout(); plt.legend(); pdf.savefig(fig); plt.close(fig)
+
+        # GA comparison (if available)
+        if df_ga is not None and moments_ga is not None:
+            _text_page(pdf, "Genetic Algorithm (GA) – Best vs Baseline", [
+                "The following pages compare series and moments under GA-optimal parameters versus baseline."
+            ])
+            # series comparisons
+            for col, title in [
+                ("U","Unemployment rate over time"),
+                ("Adopt_mean","Average adoption over time"),
+                ("Y","Aggregate output over time"),
+                ("Debt","Public debt trajectory"),
+                ("Ineq","Inequality proxy over time"),
+            ]:
+                fig = plt.figure()
+                plt.plot(df_base.index.values, df_base[col].values, label="Baseline")
+                plt.plot(df_ga.index.values, df_ga[col].values, label="GA Best")
+                plt.title("GA vs Baseline: " + title); plt.xlabel("t"); plt.ylabel(col); plt.legend()
+                plt.tight_layout(); pdf.savefig(fig); plt.close(fig)
+            # moments bar
+            fig = plt.figure()
+            x = np.arange(len(keys)); width = 0.35
+            plt.bar(x - width/2, [moments_base[k] for k in keys], width, label="Baseline")
+            plt.bar(x + width/2, [moments_ga[k] for k in keys], width, label="GA Best")
+            plt.plot(x, tgt_vals, marker="o", linestyle="None", label="Targets")
+            plt.xticks(x, keys, rotation=45, ha="right"); plt.title("Moments: Baseline vs GA Best vs Targets")
+            plt.tight_layout(); plt.legend(); pdf.savefig(fig); plt.close(fig)
+
+        # CMA-ES comparison (if available)
+        if df_cma is not None and moments_cma is not None:
+            _text_page(pdf, "CMA-ES – Best vs Baseline", [
+                "The following pages compare series and moments under CMA-ES-optimal parameters versus baseline."
+            ])
+            for col, title in [
+                ("U","Unemployment rate over time"),
+                ("Adopt_mean","Average adoption over time"),
+                ("Y","Aggregate output over time"),
+                ("Debt","Public debt trajectory"),
+                ("Ineq","Inequality proxy over time"),
+            ]:
+                fig = plt.figure()
+                plt.plot(df_base.index.values, df_base[col].values, label="Baseline")
+                plt.plot(df_cma.index.values, df_cma[col].values, label="CMA-ES Best")
+                plt.title("CMA-ES vs Baseline: " + title); plt.xlabel("t"); plt.ylabel(col); plt.legend()
+                plt.tight_layout(); pdf.savefig(fig); plt.close(fig)
+            fig = plt.figure()
+            x = np.arange(len(keys)); width = 0.35
+            plt.bar(x - width/2, [moments_base[k] for k in keys], width, label="Baseline")
+            plt.bar(x + width/2, [moments_cma[k] for k in keys], width, label="CMA-ES Best")
+            plt.plot(x, tgt_vals, marker="o", linestyle="None", label="Targets")
+            plt.xticks(x, keys, rotation=45, ha="right"); plt.title("Moments: Baseline vs CMA-ES Best vs Targets")
+            plt.tight_layout(); plt.legend(); pdf.savefig(fig); plt.close(fig)
+
+        # End page
+        _text_page(pdf, "End of Report", [
+            "This PDF aggregates baseline figures and optimizer comparisons.",
+            "Use --sensitivity to export Sobol tables and figures; these can be appended later if desired."
+        ])
+
+def _pdf_text_page(pdf, title: str, paragraphs: List[str]):
+    # Create a simple text page with title and paragraphs
+    fig = plt.figure()
+    fig.text(0.5, 0.9, title, ha='center', va='center', fontsize=14)
+    y = 0.8
+    for p in paragraphs:
+        fig.text(0.1, y, p, ha='left', va='top', fontsize=9, wrap=True)
+        y -= 0.08
+        if y < 0.1:
+            pdf.savefig(fig); plt.close(fig)
+            fig = plt.figure(); y = 0.9
+    pdf.savefig(fig); plt.close(fig)
+
+def build_combined_report(outdir: str,
+                          baseline_pdf: str = "abm_figures.pdf",
+                          compare_ga_pdf: str = "compare_ga.pdf",
+                          compare_cma_pdf: str = "compare_cmaes.pdf",
+                          moments_baseline_path: str = "abm_moments_baseline.csv",
+                          moments_ga_path: str = "abm_moments_ga.csv",
+                          moments_cma_path: str = "abm_moments_cmaes.csv",
+                          report_name: str = "abm_combined_report.pdf"):
+    from matplotlib.backends.backend_pdf import PdfPages
+    import os
+    base_pdf_path = os.path.join(outdir, baseline_pdf)
+    ga_pdf_path = os.path.join(outdir, compare_ga_pdf)
+    cma_pdf_path = os.path.join(outdir, compare_cma_pdf)
+    report_path = os.path.join(outdir, report_name)
+
+    # Read moment tables if present
+    mb = pd.read_csv(os.path.join(outdir, moments_baseline_path)) if os.path.exists(os.path.join(outdir, moments_baseline_path)) else None
+    mg = pd.read_csv(os.path.join(outdir, moments_ga_path)) if os.path.exists(os.path.join(outdir, moments_ga_path)) else None
+    mc = pd.read_csv(os.path.join(outdir, moments_cma_path)) if os.path.exists(os.path.join(outdir, moments_cma_path)) else None
+
+    with PdfPages(report_path) as pdf:
+        # Cover page
+        _pdf_text_page(pdf, "ABM Combined Report",
+                       ["This report aggregates baseline figures, optimizer comparisons, and moment summaries.",
+                        f"Output directory: {outdir}",
+                        "Sections: Baseline Figures → GA Comparison → CMA-ES Comparison → Moment Deltas"])
+
+        # Append baseline figure set if exists
+        if os.path.exists(base_pdf_path):
+            from PyPDF2 import PdfReader
+            reader = PdfReader(base_pdf_path)
+            for page in reader.pages:
+                fig = plt.figure()  # rasterize page onto figure via image export workaround
+                # Simple fallback: indicate that the page is included (PyPDF2 write needs merger)
+                # To keep dependencies minimal, we re-render minimal placeholder text.
+                # Users still have baseline PNGs for exact visuals.
+                fig.text(0.5, 0.5, "Baseline figures included separately in abm_figures.pdf", ha='center', va='center')
+                pdf.savefig(fig); plt.close(fig)
+        else:
+            _pdf_text_page(pdf, "Baseline Figures", ["No baseline figure set found. Run with --figset to include."])
+
+        # GA comparison
+        if os.path.exists(ga_pdf_path):
+            _pdf_text_page(pdf, "GA Comparison", [f"See detailed figures in {compare_ga_pdf}."])
+        else:
+            _pdf_text_page(pdf, "GA Comparison", ["No GA comparison found. Run with --opt-ga to include."])
+
+        # CMA-ES comparison
+        if os.path.exists(cma_pdf_path):
+            _pdf_text_page(pdf, "CMA-ES Comparison", [f"See detailed figures in {compare_cma_pdf}."])
+        else:
+            _pdf_text_page(pdf, "CMA-ES Comparison", ["No CMA-ES comparison found. Run with --opt-cmaes to include."])
+
+        # Moment deltas page(s)
+        paras = []
+        if mb is not None:
+            mb_row = mb.iloc[0].to_dict()
+            def fmt_kv(d): return [f"{k}: {v:.4f}" for k, v in d.items()]
+            paras += ["Baseline moments:"] + fmt_kv(mb_row) + [""]
+        if mg is not None:
+            mg_row = mg.iloc[0].to_dict()
+            deltas_g = {k: mg_row.get(k, np.nan) - (mb_row.get(k, np.nan) if mb is not None else 0.0) for k in mg_row.keys()}
+            paras += ["GA moments:", *[f"{k}: {mg_row[k]:.4f} (Δ {deltas_g[k]:+.4f})" for k in mg_row.keys()], ""]
+        if mc is not None:
+            mc_row = mc.iloc[0].to_dict()
+            deltas_c = {k: mc_row.get(k, np.nan) - (mb_row.get(k, np.nan) if mb is not None else 0.0) for k in mc_row.keys()}
+            paras += ["CMA-ES moments:", *[f"{k}: {mc_row[k]:.4f} (Δ {deltas_c[k]:+.4f})" for k in mc_row.keys()], ""]
+
+        if paras:
+            _pdf_text_page(pdf, "Moment Summaries and Deltas", paras)
+        else:
+            _pdf_text_page(pdf, "Moment Summaries and Deltas", ["No moment CSVs found to summarize."])
+
+

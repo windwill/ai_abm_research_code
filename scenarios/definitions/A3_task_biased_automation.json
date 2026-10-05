@@ -1,0 +1,17 @@
+{
+  "Scenario": {
+    "id": "A3",
+    "family": "automation",
+    "label": "Task-Biased Automation",
+    "notes": "Raises automation adoption and productivity gains for routine-intensive firms through the routine-task wedge."
+  },
+  "TechParams": {
+    "routine_adoption_wedge": 1.0,
+    "routine_productivity_wedge": 0.75,
+    "beta_P": 0.28
+  },
+  "SimulationParams": {
+    "firm_routine_mean": 0.65,
+    "firm_routine_sd": 0.22
+  }
+}

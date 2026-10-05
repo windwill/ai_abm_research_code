@@ -1,0 +1,19 @@
+{
+  "Scenario": {
+    "id": "F1",
+    "family": "ai_complementarity",
+    "label": "High Human-AI Complementarity",
+    "notes": "AI adoption creates additional supervision and new-task demand for adaptable workers."
+  },
+  "SimulationParams": {
+    "enable_ai_complementarity": true,
+    "ai_supervision_demand_scale": 0.20,
+    "ai_new_task_threshold": 0.20,
+    "ai_new_task_data_weight": 0.40,
+    "ai_complementarity_match_bonus": 0.80,
+    "ai_complementarity_wage_premium": 0.08,
+    "ai_complementarity_adapt_weight": 0.65,
+    "ai_complementarity_skill_weight": 0.35,
+    "ai_supervision_skill_threshold": 0.50
+  }
+}

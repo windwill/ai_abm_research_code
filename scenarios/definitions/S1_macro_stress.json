@@ -1,0 +1,30 @@
+{
+  "Scenario": {
+    "id": "S1",
+    "family": "shock",
+    "label": "Macro Stress Shock",
+    "notes": "Temporary demand contraction, productivity disruption, and credit tightening used for stress testing."
+  },
+  "SimulationParams": {
+    "shock_schedule": [
+      {
+        "type": "demand",
+        "start": 20,
+        "duration": 6,
+        "magnitude": -0.10
+      },
+      {
+        "type": "productivity",
+        "start": 20,
+        "duration": 3,
+        "magnitude": -0.04
+      },
+      {
+        "type": "rate",
+        "start": 20,
+        "duration": 8,
+        "magnitude": 0.02
+      }
+    ]
+  }
+}

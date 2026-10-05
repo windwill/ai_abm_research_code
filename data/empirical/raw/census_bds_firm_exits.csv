@@ -1,0 +1,2 @@
+date,variable,series_id,value,source_url
+2022-12-31,BDS_FIRM_EXIT_RATE,FIRMDEATH_FIRMS/FIRM,0.08121097812311709,"https://api.census.gov/data/timeseries/bds?get=NAME,FIRM,FIRMDEATH_FIRMS&for=us:*&time=2022"

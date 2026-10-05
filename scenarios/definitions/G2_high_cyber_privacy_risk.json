@@ -1,0 +1,25 @@
+{
+  "Scenario": {
+    "id": "G2",
+    "family": "cyber_privacy_risk",
+    "label": "High cyber/privacy operational risk",
+    "notes": "Lower data readiness, faster scaling, and weaker controls raise cyber/privacy incident frequency and operational losses."
+  },
+  "SimulationParams": {
+    "enable_cyber_privacy_risk": true,
+    "enable_deployment_friction": true,
+    "data_readiness_mean": 0.35,
+    "data_readiness_sd": 0.20,
+    "cyber_incident_base": 0.010,
+    "cyber_incident_data_sensitivity": 0.090,
+    "cyber_incident_adoption_sensitivity": 0.070,
+    "cyber_incident_stage_sensitivity": 0.030,
+    "cyber_incident_concentration_sensitivity": 0.020,
+    "cyber_control_strength": 0.25,
+    "cyber_control_cost_scale": 0.008,
+    "cyber_adoption_friction": 0.80,
+    "cyber_loss_severity": 0.080,
+    "cyber_loss_noise": 0.25,
+    "cyber_loss_cap_share": 0.40
+  }
+}

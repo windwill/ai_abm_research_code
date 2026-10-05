@@ -1,0 +1,13 @@
+{
+  "Scenario": {
+    "id": "A1",
+    "family": "automation",
+    "label": "Slow Automation Diffusion",
+    "notes": "Persistent adoption frictions and slower price-performance improvement."
+  },
+  "TechParams": {
+    "alpha_R": 0.015,
+    "beta_I": 0.1125,
+    "beta_P": 0.15
+  }
+}

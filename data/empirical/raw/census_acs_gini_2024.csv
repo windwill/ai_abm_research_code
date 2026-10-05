@@ -1,0 +1,2 @@
+date,variable,series_id,value,source_url
+2024-12-31,ACS_GINI,B19083_001E,0.4809,"https://api.census.gov/data/2024/acs/acs1?get=NAME,B19083_001E&for=us:1"

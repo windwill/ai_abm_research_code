@@ -1,0 +1,17 @@
+{
+  "Scenario": {
+    "id": "M1",
+    "family": "firm_restructuring",
+    "label": "Moderate M&A Restructuring",
+    "notes": "Occasional acquisitions create a limited redundancy channel and transfer part of acquired firm productivity and AI adoption to acquirers."
+  },
+  "SimulationParams": {
+    "enable_ma_dynamics": true,
+    "ma_base_probability": 0.005,
+    "ma_profit_sensitivity": 0.05,
+    "ma_ai_gap_sensitivity": 0.03,
+    "ma_redundancy_rate": 0.10,
+    "ma_productivity_transfer": 0.35,
+    "ma_adoption_transfer": 0.35
+  }
+}

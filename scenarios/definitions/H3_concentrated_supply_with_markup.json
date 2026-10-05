@@ -1,0 +1,17 @@
+{
+  "Scenario": {
+    "id": "H3",
+    "family": "tech_supplier_concentration",
+    "label": "Concentrated AI supply with markup pressure",
+    "notes": "Supplier share advantage mainly operates through stronger markup power."
+  },
+  "TechParams": {
+    "enable_winner_take_more": true,
+    "tech_share_memory": 0.80,
+    "tech_share_feedback": 2.00,
+    "tech_rnd_share_sensitivity": 0.20,
+    "tech_markup_share_sensitivity": 0.70,
+    "mu_max": 0.85,
+    "tech_choice_noise_std": 0.00
+  }
+}

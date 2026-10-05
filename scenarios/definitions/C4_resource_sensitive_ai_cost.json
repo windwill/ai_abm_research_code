@@ -1,0 +1,21 @@
+{
+  "Scenario": {
+    "id": "C4",
+    "family": "ai_cost",
+    "label": "Resource-Sensitive AI Cost",
+    "notes": "AI automation costs rise when desired AI-supporting resource demand exceeds available capacity."
+  },
+  "SimulationParams": {
+    "enable_ai_relative_cost": true,
+    "ai_cost_base": 1.20,
+    "ai_cost_decline": 0.01,
+    "ai_cost_resource_sensitivity": 1.50,
+    "ai_relative_cost_sensitivity": 1.00,
+    "ai_operating_cost_scale": 0.06,
+    "enable_resource_constraint": true,
+    "resource_capacity_initial": 0.20,
+    "resource_capacity_growth": 0.01,
+    "resource_demand_per_adopter": 1.00,
+    "resource_constraint_floor": 0.10
+  }
+}

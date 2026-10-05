@@ -1,0 +1,19 @@
+{
+  "Scenario": {
+    "id": "D2",
+    "family": "deployment",
+    "label": "Pilot Stall",
+    "notes": "Lower data readiness and implementation frictions cause many AI pilots to stall before production."
+  },
+  "SimulationParams": {
+    "enable_deployment_friction": true,
+    "data_readiness_mean": 0.20,
+    "data_readiness_sd": 0.08,
+    "pilot_start_scale": 1.00,
+    "pilot_success_base": 0.00,
+    "pilot_success_data_weight": 0.15,
+    "pilot_failure_base": 0.35,
+    "pilot_failure_data_weight": 0.50,
+    "production_scale_rate": 0.05
+  }
+}

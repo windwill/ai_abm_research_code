@@ -1,0 +1,17 @@
+{
+  "Scenario": {
+    "id": "P2",
+    "family": "policy",
+    "label": "Active Training Subsidy",
+    "notes": "Stronger reskilling support and moderately stronger stabilizer settings."
+  },
+  "PolicyParams": {
+    "eta_G": -0.42,
+    "eta_S": 0.08
+  },
+  "SimulationParams": {
+    "enable_training_subsidy": true,
+    "training_subsidy_effect": 0.80,
+    "subsidy_spend_scale": 1.10
+  }
+}

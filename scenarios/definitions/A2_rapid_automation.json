@@ -1,0 +1,13 @@
+{
+  "Scenario": {
+    "id": "A2",
+    "family": "automation",
+    "label": "Rapid Automation Diffusion",
+    "notes": "Faster innovation drift and stronger adoption responsiveness."
+  },
+  "TechParams": {
+    "alpha_R": 0.026,
+    "beta_I": 0.225,
+    "beta_P": 0.30
+  }
+}

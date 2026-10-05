@@ -1,0 +1,24 @@
+{
+  "Scenario": {
+    "id": "I3",
+    "family": "compute_cost",
+    "label": "Resource-sensitive computation cost",
+    "notes": "Computation unit costs rise when AI-supporting resource capacity is scarce relative to compute demand."
+  },
+  "SimulationParams": {
+    "enable_compute_cost": true,
+    "enable_resource_constraint": true,
+    "resource_capacity_initial": 0.20,
+    "resource_capacity_growth": 0.01,
+    "resource_demand_per_adopter": 1.00,
+    "resource_constraint_floor": 0.10,
+    "compute_unit_cost_base": 0.35,
+    "compute_unit_cost_decline": 0.01,
+    "compute_resource_sensitivity": 1.50,
+    "compute_intensity_per_adoption": 1.50,
+    "compute_training_share": 0.25,
+    "compute_inference_scale": 1.00,
+    "compute_adoption_cost_sensitivity": 0.65,
+    "compute_cost_cap_share": 0.40
+  }
+}

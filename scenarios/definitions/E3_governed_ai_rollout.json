@@ -1,0 +1,24 @@
+{
+  "Scenario": {
+    "id": "E3",
+    "family": "ai_operational_risk",
+    "label": "Governed AI Rollout",
+    "notes": "Deployment friction slows scaling, but stronger data readiness and lower error sensitivity reduce operational losses."
+  },
+  "SimulationParams": {
+    "enable_ai_operational_risk": true,
+    "enable_deployment_friction": true,
+    "data_readiness_mean": 0.75,
+    "data_readiness_sd": 0.10,
+    "pilot_start_scale": 0.55,
+    "pilot_success_base": 0.20,
+    "pilot_success_data_weight": 0.50,
+    "pilot_failure_base": 0.05,
+    "pilot_failure_data_weight": 0.10,
+    "ai_error_base": 0.004,
+    "ai_error_data_sensitivity": 0.025,
+    "ai_error_stage_sensitivity": 0.010,
+    "ai_error_adoption_sensitivity": 0.015,
+    "ai_loss_severity": 0.015
+  }
+}

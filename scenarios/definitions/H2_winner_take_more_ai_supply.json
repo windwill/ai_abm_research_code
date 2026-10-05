@@ -1,0 +1,16 @@
+{
+  "Scenario": {
+    "id": "H2",
+    "family": "tech_supplier_concentration",
+    "label": "Winner-take-more AI supply",
+    "notes": "Lagged market share raises supplier attractiveness, R&D advantage, and pricing power."
+  },
+  "TechParams": {
+    "enable_winner_take_more": true,
+    "tech_share_memory": 0.85,
+    "tech_share_feedback": 3.00,
+    "tech_rnd_share_sensitivity": 0.75,
+    "tech_markup_share_sensitivity": 0.35,
+    "tech_choice_noise_std": 0.00
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "Scenario": {
+    "id": "G3",
+    "family": "cyber_privacy_risk",
+    "label": "Security hardening",
+    "notes": "Higher control strength lowers incident rates but increases recurring cyber/privacy control costs."
+  },
+  "SimulationParams": {
+    "enable_cyber_privacy_risk": true,
+    "enable_deployment_friction": true,
+    "data_readiness_mean": 0.65,
+    "cyber_incident_base": 0.005,
+    "cyber_incident_data_sensitivity": 0.050,
+    "cyber_incident_adoption_sensitivity": 0.035,
+    "cyber_incident_stage_sensitivity": 0.015,
+    "cyber_control_strength": 0.85,
+    "cyber_control_cost_scale": 0.025,
+    "cyber_adoption_friction": 0.45,
+    "cyber_loss_severity": 0.035,
+    "cyber_loss_cap_share": 0.25
+  }
+}
